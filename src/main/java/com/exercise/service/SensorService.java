@@ -19,7 +19,7 @@ public class SensorService {
     private DSLContext create;
 
     public Collection<Sensor> getSensors() {
-        return create.selectFrom(SENSOR).fetch(record -> new Sensor(record.getSensorPublicId()));
+        return create.selectFrom(SENSOR).fetch(record -> new Sensor(record.getId(), record.getSensorPublicId()));
     }
 
     @Transactional
@@ -28,5 +28,6 @@ public class SensorService {
         sensorRecord.setSensorPublicId(sensor.getSensorId());
         sensorRecord.store();
     }
+
 
 }

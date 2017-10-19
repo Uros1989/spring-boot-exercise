@@ -25,11 +25,5 @@ public class MedianResource {
         return ResponseEntity.ok(medians);
     }
     
-/*    @PostMapping
-    ResponseEntity addMeasurement(@RequestBody Measurement measurement) {
-    	measurementService.addMeasurement(measurement);
-        return ResponseEntity.ok().build();
-    }*/
-
 	
 }

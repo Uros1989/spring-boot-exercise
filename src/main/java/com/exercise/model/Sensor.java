@@ -2,16 +2,28 @@ package com.exercise.model;
 
 public class Sensor {
 
-    private String sensorId;
+	private String sensorId;
 
-    public Sensor() {
-    }
+	private Long id;
 
-    public Sensor(String sensorId) {
-        this.sensorId = sensorId;
-    }
+	public Sensor() {
+	}
 
-    public String getSensorId() {
-        return sensorId;
-    }
+	public Sensor(String sensorId) {
+		this.sensorId = sensorId;
+	}
+
+	public Sensor(Long id, String sensorId) {
+		this.id = id;
+		this.sensorId = sensorId;
+	}
+
+	public String getSensorId() {
+		return sensorId;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
 }
