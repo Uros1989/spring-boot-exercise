@@ -1,6 +1,5 @@
 package com.exercise.service;
 
-import static com.exercise.generated.public_.tables.Measurement.MEASUREMENT;
 import static com.exercise.generated.public_.tables.Median.MEDIAN;
 
 import java.sql.Timestamp;

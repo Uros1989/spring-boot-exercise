@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.exercise.model.Measurement;
 import com.exercise.model.Median;
 
 import io.restassured.RestAssured;

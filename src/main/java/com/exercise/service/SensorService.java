@@ -1,16 +1,16 @@
 package com.exercise.service;
 
-import com.exercise.generated.public_.tables.records.SensorRecord;
-import com.exercise.model.Sensor;
+import static com.exercise.generated.public_.tables.Sensor.SENSOR;
+
+import java.util.Collection;
+
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
-import java.util.List;
-
-import static com.exercise.generated.public_.tables.Sensor.SENSOR;
+import com.exercise.generated.public_.tables.records.SensorRecord;
+import com.exercise.model.Sensor;
 
 @Service
 public class SensorService {

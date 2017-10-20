@@ -5,8 +5,6 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.HttpStatus.OK;
 
-import java.sql.Timestamp;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
