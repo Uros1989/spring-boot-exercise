@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.exercise.model.Measurement;
 import com.exercise.service.MeasurementService;
@@ -21,8 +22,8 @@ public class MeasurementResource {
     @Autowired
     private MeasurementService measurementService;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    ResponseEntity getMeasurements(@PathVariable("id") long id) {
+    @RequestMapping
+    ResponseEntity getMeasurements(@RequestParam("id") long id) {
         Collection<Measurement> measurements = measurementService.getMeasurements(id);
         return ResponseEntity.ok(measurements);
     }

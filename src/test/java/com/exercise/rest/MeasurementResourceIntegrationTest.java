@@ -30,20 +30,18 @@ public class MeasurementResourceIntegrationTest {
 
 	@Test
 	public void should_return_preconfigured_measurements() {
-		when().get("/measurements/3").then().statusCode(OK.value()).body("timestamp", hasItems(1115961331123L));
+		when().get("/measurements?id=3").then().statusCode(OK.value()).body("timestamp", hasItems(1115961331123L));
 	}
 
 	@Test
 	public void should_add_new_measurement() {
-		// add sensor
 		given().contentType(JSON)
 				.body("    {\r\n\"value\": 12.2235,\r\n\"timestamp\": 1115961331123,\r\n\"sensorId\": 1\r\n}")
 				.when().post("/measurements").
 
 		then().statusCode(OK.value());
 
-		// get sensors
-		when().get("/measurements/1").then().statusCode(OK.value()).body("timestamp", hasItems(1115961331123L));
+		when().get("/measurements?id=3").then().statusCode(OK.value()).body("timestamp", hasItems(1115961331123L));
 	}
 
 }
