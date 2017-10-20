@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,6 @@ import org.springframework.stereotype.Component;
 import com.exercise.model.Measurement;
 import com.exercise.model.Median;
 import com.exercise.model.Sensor;
-
 
 @Component
 public class SchedulerService {
@@ -72,8 +72,18 @@ public class SchedulerService {
 				bigDecimalsValues.add(measurement.getValue());
 				i++;
 			}
+			
+			Collections.sort(bigDecimalsValues);
 
-			medianValue = bigDecimalsValues.get(i / 2);
+			if (i % 2 == 0) {
+				medianValue = (bigDecimalsValues.get(i / 2).add(bigDecimalsValues.get(i / 2 - 1)))
+						.divide(new BigDecimal(2));
+
+			} else {
+				medianValue = bigDecimalsValues.get(i / 2);
+
+			}
+
 		} else {
 			medianValue = new BigDecimal(0);
 		}

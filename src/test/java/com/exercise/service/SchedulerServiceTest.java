@@ -45,7 +45,7 @@ public class SchedulerServiceTest {
     	schedulerService.calculateForSensor(2L, new Timestamp(639983431121L), new Timestamp(645254431125L));;
     	
     	assertEquals(1, medianService.getMedians(2L, 639983431120L, 645254431126L).size());
-    	assertEquals(new BigDecimal("2.435"), ((ArrayList<Median>)medianService.getMedians(2L, 639983431120L, 645254431126L)).get(0).getValue());
+    	assertEquals(new BigDecimal("28.435"), ((ArrayList<Median>)medianService.getMedians(2L, 639983431120L, 645254431126L)).get(0).getValue());
     	
     	
     }
