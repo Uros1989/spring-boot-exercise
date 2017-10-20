@@ -1,7 +1,9 @@
 package com.exercise.service;
 
+import static com.exercise.generated.public_.tables.Measurement.MEASUREMENT;
 import static com.exercise.generated.public_.tables.Median.MEDIAN;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 
 import org.jooq.DSLContext;
@@ -23,16 +25,11 @@ public class MedianService {
 				.fetch(record -> new Median(record.getSensorId(), record.getValue(), record.getTimestamp()));
 	}
 
-	/*
-	 * @Transactional public void addMeasurement(Measurement measurement) {
-	 * MeasurementRecord measurementRecord = create.newRecord(MEASUREMENT);
-	 * measurementRecord.setSensorId(measurement.getSensorId());
-	 * measurementRecord.setValue(measurement.getValue());
-	 * measurementRecord.setTimestamp(measurement.getTimestamp());
-	 * measurementRecord.store(); }
-	 */
-
-
+	public Collection<Median> getMedians(Long sensorId, Long start, Long end) {
+		return create.selectFrom(MEDIAN).where(MEDIAN.SENSOR_ID.eq(sensorId))
+				.and(MEDIAN.TIMESTAMP.between(new Timestamp(start), new Timestamp(end))).orderBy(MEDIAN.TIMESTAMP.asc())
+				.fetch(record -> new Median(record.getSensorId(), record.getValue(), record.getTimestamp()));
+	}
 
 	@Transactional
 	public void addMedian(Median median) {

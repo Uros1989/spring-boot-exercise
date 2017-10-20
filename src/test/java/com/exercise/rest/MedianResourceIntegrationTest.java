@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.HttpStatus.OK;
 
+import java.sql.Timestamp;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,10 +31,10 @@ public class MedianResourceIntegrationTest {
     @Test
     public void should_return_preconfigured_medians() {
         when().
-                get("/medians/3").
+                get("/medians?id=3&start=1508458666269&end=1508458666271").
         then().
                 statusCode(OK.value()).
-                body("timestamp", hasItems(1115961331123L));
+                body("timestamp", hasItems(1508458666270L));
     }
 
 }
