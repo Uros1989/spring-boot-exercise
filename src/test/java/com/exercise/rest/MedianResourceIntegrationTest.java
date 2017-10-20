@@ -31,10 +31,10 @@ public class MedianResourceIntegrationTest {
     @Test
     public void should_return_preconfigured_medians() {
         when().
-                get("/medians?id=3&start=1508458666269&end=1508458666271").
+                get("/medians?id=3&start=1115961331120&end=1115961331125").
         then().
                 statusCode(OK.value()).
-                body("timestamp", hasItems(1508458666270L));
+                body("timestamp", hasItems(1115961331123L));
     }
 
 }

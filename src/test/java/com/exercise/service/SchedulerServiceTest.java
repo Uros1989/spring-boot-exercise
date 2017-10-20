@@ -26,9 +26,6 @@ public class SchedulerServiceTest {
 
     @LocalServerPort
     private int port;
-
-    @Autowired
-    private MeasurementService measurementService;
     
     @Autowired
     private SchedulerService schedulerService;
@@ -44,17 +41,11 @@ public class SchedulerServiceTest {
     @Test
     public void should_calculate_medians() {
      	
-    	Measurement m1 = new Measurement(2L, new BigDecimal("1.0000"), new Timestamp(1000L));
-    	Measurement m2 = new Measurement(2L, new BigDecimal("2.0000"), new Timestamp(1001L));
-    	Measurement m3 = new Measurement(2L, new BigDecimal("3.0000"), new Timestamp(1003L));
-    	measurementService.addMeasurement(m1);
-    	measurementService.addMeasurement(m2);
-    	measurementService.addMeasurement(m3);
     	
-    	schedulerService.calculateForSensor(2L, new Timestamp(999L), new Timestamp(10004L));;
+    	schedulerService.calculateForSensor(2L, new Timestamp(639983431121L), new Timestamp(645254431125L));;
     	
-    	assertEquals(2, medianService.getMedians(2L).size());
-    	assertEquals(new BigDecimal("2.0000"), ((ArrayList<Median>)medianService.getMedians(2L)).get(1).getValue());
+    	assertEquals(1, medianService.getMedians(2L, 639983431120L, 645254431126L).size());
+    	assertEquals(new BigDecimal("2.435"), ((ArrayList<Median>)medianService.getMedians(2L, 639983431120L, 645254431126L)).get(0).getValue());
     	
     	
     }
