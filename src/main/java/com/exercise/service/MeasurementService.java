@@ -26,7 +26,7 @@ public class MeasurementService {
 
 	public Collection<Measurement> getMeasurements(Long sensorId, Timestamp start, Timestamp end) {
 		return create.selectFrom(MEASUREMENT).where(MEASUREMENT.SENSOR_ID.eq(sensorId))
-				.and(MEASUREMENT.TIMESTAMP.between(start, end)).orderBy(MEASUREMENT.TIMESTAMP.asc())
+				.and(MEASUREMENT.TIMESTAMP.between(start, end)).orderBy(MEASUREMENT.VALUE.asc())
 				.fetch(record -> new Measurement(record.getSensorId(), record.getValue(), record.getTimestamp()));
 	}
 

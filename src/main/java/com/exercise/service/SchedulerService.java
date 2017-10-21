@@ -64,15 +64,12 @@ public class SchedulerService {
 		if (!sensorMeasurements.isEmpty()) {
 			List<BigDecimal> bigDecimalsValues = new ArrayList<>();
 
-			// BigDecimal average = new BigDecimal(0);
 			int i = 0;
 			for (Measurement measurement : sensorMeasurements) {
 				bigDecimalsValues.add(measurement.getValue());
 				i++;
 			}
 			
-			Collections.sort(bigDecimalsValues);
-
 			if (i % 2 == 0) {
 				medianValue = (bigDecimalsValues.get(i / 2).add(bigDecimalsValues.get(i / 2 - 1)))
 						.divide(new BigDecimal(2));
