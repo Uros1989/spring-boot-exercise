@@ -62,20 +62,20 @@ public class SchedulerService {
 		Collection<Measurement> sensorMeasurements = measurementService.getMeasurements(sensorId, start, end);
 		BigDecimal medianValue;
 		if (!sensorMeasurements.isEmpty()) {
-			List<BigDecimal> bigDecimalsValues = new ArrayList<>();
+			List<BigDecimal> measurementValues = new ArrayList<>();
 
-			int i = 0;
 			for (Measurement measurement : sensorMeasurements) {
-				bigDecimalsValues.add(measurement.getValue());
-				i++;
+				measurementValues.add(measurement.getValue());
 			}
 			
-			if (i % 2 == 0) {
-				medianValue = (bigDecimalsValues.get(i / 2).add(bigDecimalsValues.get(i / 2 - 1)))
+			int length = measurementValues.size();
+			
+			if (length % 2 == 0) {
+				medianValue = (measurementValues.get(length / 2).add(measurementValues.get(length / 2 - 1)))
 						.divide(new BigDecimal(2));
 
 			} else {
-				medianValue = bigDecimalsValues.get(i / 2);
+				medianValue = measurementValues.get(length / 2);
 
 			}
 
