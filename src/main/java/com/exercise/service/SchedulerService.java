@@ -48,6 +48,7 @@ public class SchedulerService {
 
 	}
 
+	// TODO [3]: improve code by using Java 8 streams
 	private void calculateMedians(Timestamp startTimestamp, Timestamp endTimestamp) {
 		Collection<Sensor> sensors = sensorService.getSensors();
 
